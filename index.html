@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anss Imran | Full Stack Developer Portfolio</title>
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for professional graphics -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Define Inter as the default font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        :root {
+            --primary-color: #4f46e5; /* Indigo-600 */
+            --secondary-color: #818cf8; /* Indigo-400 */
+            --background-color: #0f172a; /* Slate-900 */
+            --text-color: #e2e8f0; /* Slate-200 */
+        }
+
+        /* Animated Background Theme */
+        @keyframes background-shift {
+            0% { background-color: #0f172a; }
+            50% { background-color: #111a31; } /* Subtle shift to a slightly different dark blue */
+            100% { background-color: #0f172a; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            /* Apply very slow, subtle background animation for a dynamic theme */
+            animation: background-shift 60s ease infinite alternate;
+        }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        /* Smooth scroll margin for fixed header */
+        .scroll-mt-20 {
+            scroll-margin-top: 5rem;
+        }
+
+        /* Keyframes for a gentle fade-in effect */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Button Animations */
+        .animated-button {
+            /* Base transition for all button properties */
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .animated-button:hover {
+            box-shadow: 0 8px 15px rgba(79, 70, 229, 0.4); /* Indigo glow on hover */
+            transform: translateY(-2px) scale(1.01); /* Lift and slight scale */
+        }
+
+        /* Icon Wiggle Animation on Skill Card Hover */
+        .skill-card:hover .skill-icon {
+            animation: subtle-spin 0.6s ease-out;
+        }
+
+        @keyframes subtle-spin {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+        
+        /* Social Icon Hover Pulse/Glow */
+        .social-icon-link {
+            transition: all 0.2s ease-in-out;
+            filter: drop-shadow(0 0 0 transparent);
+        }
+        .social-icon-link:hover {
+            color: #a5b4fc; /* Light indigo */
+            transform: scale(1.15) translateY(-3px);
+            filter: drop-shadow(0 0 5px var(--secondary-color));
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-sm shadow-xl">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="#home" class="text-2xl font-extrabold text-white tracking-wider">
+                <span class="text-indigo-400">&lt;</span>AnssI<span class="text-indigo-400">/&gt;</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-slate-300 hover:text-indigo-400 transition duration-300 font-medium">About</a>
+                <a href="#skills" class="nav-link text-slate-300 hover:text-indigo-400 transition duration-300 font-medium">Skills</a>
+                <a href="#projects" class="nav-link text-slate-300 hover:text-indigo-400 transition duration-300 font-medium">Projects</a>
+                <a href="#contact" class="nav-link text-slate-300 hover:text-indigo-400 transition duration-300 font-medium">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-300 hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-150">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-indigo-400 transition duration-150">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-indigo-400 transition duration-150">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-indigo-400 transition duration-150">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-indigo-400 transition duration-150">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32 flex flex-col md:flex-row items-center justify-between gap-12">
+            
+            <!-- Text Content -->
+            <div class="md:w-3/5 text-center md:text-left">
+                <p class="text-xl text-indigo-400 font-semibold mb-2">Hi, I'm</p>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight text-white mb-4">
+                    Anss Imran
+                </h1>
+                <h2 class="text-2xl md:text-4xl font-light text-slate-400 mb-6">
+                    Full Stack Developer & Software Architect
+                </h2>
+                <p class="text-lg text-slate-300 max-w-lg mx-auto md:mx-0 mb-8">
+                    I build scalable, modern web applications with a focus on performance and clean, maintainable code. Let's create something impactful.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#projects" class="animated-button px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="animated-button px-6 py-3 border border-indigo-600 text-indigo-400 font-semibold rounded-lg hover:bg-indigo-600 hover:text-white">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image Placeholder -->
+            <div class="md:w-2/5 flex justify-center">
+                <img src="https://placehold.co/400x400/1e293b/94a3b8?text=Anss+Imran" 
+                     alt="Professional profile image of Anss Imran" 
+                     class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-indigo-500 shadow-2xl object-cover transform hover:scale-[1.05] transition duration-500" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x400/1e293b/94a3b8?text=Anss+Imran';"
+                >
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="scroll-mt-20 py-20 bg-slate-800/50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-white mb-4">About Me</h2>
+                <p class="text-xl text-indigo-400 text-center mb-12">Driven by code, dedicated to quality.</p>
+
+                <div class="bg-slate-700/30 p-8 md:p-12 rounded-xl shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div class="text-lg space-y-4">
+                            <p>
+                                With 5+ years of experience, I specialize in the **MERN stack** (MongoDB, Express, React, Node.js) and modern cloud architecture. My passion lies in translating complex business requirements into elegant, high-performing software solutions.
+                            </p>
+                            <p>
+                                I am an advocate for clean code, automated testing, and continuous delivery. Beyond my primary stack, I actively explore new technologies like **Go**, **TypeScript**, and serverless platforms to stay ahead of the curve and adopt best practices.
+                            </p>
+                        </div>
+                        <div class="text-lg">
+                            <h3 class="text-2xl font-semibold text-white mb-4 flex items-center">
+                                <i data-lucide="brain-circuit" class="w-6 h-6 mr-2 text-indigo-400"></i> My Core Philosophy
+                            </h3>
+                            <ul class="space-y-3 text-slate-300 list-none pl-0">
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-2 mt-1 text-green-400 flex-shrink-0"></i>
+                                    **Scalability First:** Designing systems that can grow with the user base.
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-2 mt-1 text-green-400 flex-shrink-0"></i>
+                                    **User-Centric UI:** Building interfaces that are intuitive and accessible.
+                                </li>
+                                <li class="flex items-start">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-2 mt-1 text-green-400 flex-shrink-0"></i>
+                                    **Automated Quality:** Ensuring code integrity through comprehensive testing.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-20 py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-white mb-4">Technical Expertise</h2>
+                <p class="text-xl text-indigo-400 text-center mb-12">The tools I use to bring ideas to life.</p>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+
+                    <!-- Skill Card Template: HTML5 -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="code" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">HTML5</p>
+                    </div>
+                    <!-- Skill Card Template: CSS3 -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="palette" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">CSS3</p>
+                    </div>
+                    <!-- Skill Card Template: JavaScript -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="file-text" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">JavaScript</p>
+                    </div>
+                    <!-- Skill Card Template: Java -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="coffee" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">Java</p>
+                    </div>
+                    <!-- Skill Card Template: Figma -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="figma" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">Figma</p>
+                    </div>
+                    
+                    <!-- Other Skills -->
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="react" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">React / Next.js</p>
+                    </div>
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="database" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">Node.js / Express</p>
+                    </div>
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="type" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">TypeScript</p>
+                    </div>
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="globe" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">AWS / Serverless</p>
+                    </div>
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="layout-grid" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">Tailwind CSS</p>
+                    </div>
+                    <div class="skill-card bg-slate-800 p-6 rounded-xl text-center shadow-lg transform hover:scale-[1.05] transition duration-300 border border-slate-700 hover:border-indigo-500">
+                        <i data-lucide="git-branch" class="skill-icon w-10 h-10 mx-auto mb-3 text-indigo-400 transition-transform duration-300"></i>
+                        <p class="text-lg font-medium text-white">Git / CI/CD</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="scroll-mt-20 py-20 bg-slate-800/50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-white mb-4">Featured Projects</h2>
+                <p class="text-xl text-indigo-400 text-center mb-12">Highlights of my recent development work.</p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="project-card bg-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-700 transform hover:translate-y-[-5px] transition duration-300">
+                        <img src="https://placehold.co/600x400/334155/e2e8f0?text=E-commerce+Platform" alt="Project 1: E-commerce Platform" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">SaaS Analytics Dashboard</h3>
+                            <p class="text-slate-400 mb-4">A high-performance real-time data visualization tool built with React, D3.js, and a Node.js/GraphQL API.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">React</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">GraphQL</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">D3.js</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center text-indigo-400 font-semibold hover:text-indigo-300 transition duration-300">
+                                View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card bg-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-700 transform hover:translate-y-[-5px] transition duration-300">
+                        <img src="https://placehold.co/600x400/334155/e2e8f0?text=Social+Media+App" alt="Project 2: Social Media App" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">Collaborative Whiteboard</h3>
+                            <p class="text-slate-400 mb-4">A real-time, low-latency collaboration application using WebSockets and Express. Highly scalable backend.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">Node.js</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">WebSockets</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">PostgreSQL</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center text-indigo-400 font-semibold hover:text-indigo-300 transition duration-300">
+                                View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card bg-slate-800 rounded-xl overflow-hidden shadow-2xl border border-slate-700 transform hover:translate-y-[-5px] transition duration-300">
+                        <img src="https://placehold.co/600x400/334155/e2e8f0?text=API+Documentation" alt="Project 3: API Documentation" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-white mb-3">Serverless Microservice API</h3>
+                            <p class="text-slate-400 mb-4">Designed and deployed a cost-effective, high-availability REST API using AWS Lambda and DynamoDB.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">AWS Lambda</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">DynamoDB</span>
+                                <span class="text-xs font-semibold px-3 py-1 bg-indigo-900 text-indigo-300 rounded-full">GoLang</span>
+                            </div>
+                            <a href="#" class="inline-flex items-center text-indigo-400 font-semibold hover:text-indigo-300 transition duration-300">
+                                View Demo <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-20 py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-white mb-4">Get In Touch</h2>
+                <p class="text-xl text-indigo-400 text-center mb-12">Let's discuss your next project or opportunity.</p>
+
+                <div class="bg-slate-800 p-8 md:p-10 rounded-xl shadow-2xl border border-slate-700">
+                    <form action="#" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-slate-300 mb-1">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Your Name" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="your.email@example.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-300 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="How can I help you?"></textarea>
+                        </div>
+                        <button type="submit" class="animated-button w-full px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <div class="mt-8 pt-6 border-t border-slate-700 text-center">
+                        <p class="text-slate-400 mb-3">... or find me on:</p>
+                        <div class="flex justify-center space-x-6">
+                            <!-- Social Media Links (use placeholders) -->
+                            <a href="#" aria-label="LinkedIn" class="social-icon-link text-slate-300 hover:text-indigo-400">
+                                <i data-lucide="linkedin" class="w-7 h-7"></i>
+                            </a>
+                            <a href="#" aria-label="GitHub" class="social-icon-link text-slate-300 hover:text-indigo-400">
+                                <i data-lucide="github" class="w-7 h-7"></i>
+                            </a>
+                            <a href="#" aria-label="Twitter" class="social-icon-link text-slate-300 hover:text-indigo-400">
+                                <i data-lucide="twitter" class="w-7 h-7"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-slate-400">
+            <p>&copy; 2025 Anss Imran. Built with Tailwind CSS and lots of coffee.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Lucide Icon Replacement -->
+    <script>
+        // Lucide Icons: Replaces the 'i' tags with SVG icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Optional: Implement the smooth scrolling behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default if it's an internal hash link
+                if (this.getAttribute('href').length > 1) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Calculate position considering the fixed header height (20 units = 5rem)
+                        const headerHeight = 80; // 5rem * 16px/rem = 80px
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>
